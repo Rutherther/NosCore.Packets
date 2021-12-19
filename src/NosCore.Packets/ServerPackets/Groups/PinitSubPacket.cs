@@ -35,7 +35,7 @@ namespace NosCore.Packets.ServerPackets.Groups
         public int Unknown { get; set; } //TODO: Find what this is made for
 
         [PacketIndex(6)]
-        public GenderType Gender { get; set; }
+        public long PetVNum { get; set; }
 
         [PacketIndex(7)]
         public short Race { get; set; }
