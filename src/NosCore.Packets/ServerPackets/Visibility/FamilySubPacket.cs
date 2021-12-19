@@ -12,7 +12,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
     public class FamilySubPacket : PacketBase
     {
         [PacketIndex(0)]
-        public long? FamilyId { get; set; }
+        public string? FamilyId { get; set; }
 
         [PacketIndex(1)]
         public short? Title { get; set; }

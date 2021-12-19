@@ -22,7 +22,7 @@ namespace NosCore.Packets.ClientPackets.Families
         public long VisualId { get; set; }
 
         [PacketIndex(2)]
-        public long FamilyId { get; set; }
+        public string? FamilyId { get; set; }
 
         [PacketIndex(3)]
         public string? FamilyName { get; set; }

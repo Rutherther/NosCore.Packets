@@ -536,7 +536,7 @@ namespace NosCore.Packets.Tests
                 Name = "test",
                 Unknown1 = null,
                 GroupId = -1,
-                FamilyId = 0,
+                FamilyId = "0",
                 FamilyName = null,
                 CharacterId = 1,
                 Authority = AuthorityType.User,
@@ -678,7 +678,7 @@ namespace NosCore.Packets.Tests
             {
                 VisualType = VisualType.Player,
                 VisualId = 1,
-                FamilyId = 1337,
+                FamilyId = "1337",
                 FamilyName = "FAMILY_NAME",
                 FamilyCustomRank = "NONE",
                 FamilyLevel = 10,

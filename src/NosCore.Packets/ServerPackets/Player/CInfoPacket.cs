@@ -24,7 +24,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public short? GroupId { get; set; }
 
         [PacketIndex(3)]
-        public int FamilyId { get; set; }
+        public string? FamilyId { get; set; }
 
         [PacketIndex(4)]
         public string? FamilyName { get; set; }
