@@ -355,7 +355,7 @@ namespace NosCore.Packets
 
                             for (var index = 0; index < packSeperators.Count; index++)
                             {
-                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1]!.SpecialSeparator ?? ".", StringComparison.Ordinal);
+                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1]!.SpecialSeparator ?? packetIndexAttribute.SpecialSeparator ?? ".", StringComparison.Ordinal);
                                 if (c == -1)
                                 {
                                     toConvert += subpacket;
