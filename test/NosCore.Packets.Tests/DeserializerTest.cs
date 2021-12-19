@@ -154,12 +154,11 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void DeserializeListSeparator()
         {
-            var packet = (GidxPacket)Deserializer.Deserialize("gidx 0 1 2 familyname customrank 3 1|1|1|0");
+            var packet = (GidxPacket)Deserializer.Deserialize("gidx 0 1 2 familyname 3 1|1|1|0");
             Assert.IsTrue(packet.VisualType == VisualType.Map);
             Assert.IsTrue(packet.VisualId == 1);
             Assert.IsTrue(packet.FamilyId == "2");
             Assert.IsTrue(packet.FamilyName == "familyname");
-            Assert.IsTrue(packet.FamilyCustomRank == "customrank");
             Assert.IsTrue(packet.FamilyLevel == 3);
             Assert.IsTrue(packet.FamilyIcons.Count(s => s) == 3);
             Assert.IsTrue(packet.FamilyIcons.Count(s => !s) == 1);

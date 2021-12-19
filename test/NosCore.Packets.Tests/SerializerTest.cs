@@ -680,13 +680,12 @@ namespace NosCore.Packets.Tests
                 VisualId = 1,
                 FamilyId = "1337",
                 FamilyName = "FAMILY_NAME",
-                FamilyCustomRank = "NONE",
                 FamilyLevel = 10,
                 FamilyIcons = new List<bool> { false, false, false }
             };
             var packet = Serializer.Serialize(characterTest);
             Assert.AreEqual(
-                $"gidx 1 1 1337 FAMILY_NAME NONE 10 0|0|0",
+                $"gidx 1 1 1337 FAMILY_NAME 10 0|0|0",
                 packet);
         }
 
