@@ -28,7 +28,7 @@ namespace NosCore.Packets.ServerPackets.Chats
         public byte Type { get; set; }
 
         [PacketIndex(4)]
-        public Game18NConstString Message { get; set; }
+        public long ItemVNum { get; set; }
 
         [PacketIndex(4)]
         public string? VisualName { get; set; }
