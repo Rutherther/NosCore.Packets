@@ -28,12 +28,9 @@ namespace NosCore.Packets.ClientPackets.Families
         public string? FamilyName { get; set; }
 
         [PacketIndex(4)]
-        public string? FamilyCustomRank { get; set; }
-
-        [PacketIndex(5)]
         public byte FamilyLevel { get; set; }
 
-        [PacketListIndex(6, ListSeparator = "|")]
+        [PacketListIndex(5, ListSeparator = "|")]
         public List<bool>? FamilyIcons { get; set; }
     }
 }
