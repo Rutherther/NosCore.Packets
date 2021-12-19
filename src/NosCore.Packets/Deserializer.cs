@@ -163,6 +163,7 @@ namespace NosCore.Packets
 
         public IPacket Deserialize(string packetContent)
         {
+            packetContent = packetContent.Trim(); // ?
             try
             {
                 var isSpecial = false;
@@ -291,8 +292,22 @@ namespace NosCore.Packets
                 case var prop when prop == typeof(IPacket):
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
-                    var dic = _packetDeserializerDictionary[prop.Name];
-                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
+                    var dic = _packetDeserializerDictionary[prop.GetCustomAttribute<PacketHeaderAttribute>()?.Identification ?? prop.Name];
+                    string deserializeString = "";
+                    if (packetBasePropertyInfo.Item2.SpecialSeparator == "")
+                    {
+                        deserializeString = string.Join(' ', matches[currentIndex].ToCharArray());
+                    }
+                    else
+                    {
+                        deserializeString = matches[currentIndex]
+                            .Replace(
+                                (packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind
+                                    ? ind.ListSeparator
+                                    : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " ");
+                    }
+                    
+                    var packet = DeserializeIPacket(dic, deserializeString, false, false);
                     currentIndex++;
                     return packet;
                 default:
