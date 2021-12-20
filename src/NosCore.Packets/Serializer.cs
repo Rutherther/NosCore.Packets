@@ -272,7 +272,7 @@ namespace NosCore.Packets
             var injectedPacket = Expression.Parameter(typeof(bool));
             return Expression.Lambda(
                 Expression.Convert(
-                    PacketSerializer(injectedPacket, new PacketIndexAttribute(0), param, typeof(T), maxIndex, Expression.Constant(" "), header),
+                    PacketSerializer(injectedPacket, new PacketIndexAttribute(0), param, typeof(T), maxIndex, Expression.Constant(" "), header!),
                     typeof(object)), param, injectedPacket);
         }
 
