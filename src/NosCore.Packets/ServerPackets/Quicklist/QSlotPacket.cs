@@ -17,7 +17,7 @@ namespace NosCore.Packets.ServerPackets.Quicklist
         [PacketIndex(0)]
         public long Slot { get; set; }
 
-        [PacketListIndex(1)]
+        [PacketListIndex(1, SpecialSeparator = ".")]
         public List<QsetClientSubPacket?>? Data { get; set; }
     }
 }
