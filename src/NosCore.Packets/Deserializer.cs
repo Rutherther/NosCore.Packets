@@ -296,11 +296,25 @@ namespace NosCore.Packets
                     string deserializeString = "";
                     if (packetBasePropertyInfo.Item2.SpecialSeparator == "")
                     {
-                        deserializeString = string.Join(' ', matches[currentIndex].ToCharArray());
+                        deserializeString = string.Join(" ", matches[currentIndex].ToCharArray());
                     }
                     else
                     {
-                        deserializeString = matches[currentIndex]
+                        if (packetBasePropertyInfo.Item2.Length > 1)
+                        {
+                            for (int i = 0; i < packetBasePropertyInfo.Item2.Length; i++)
+                            {
+                                deserializeString += $" {matches[currentIndex++]}";
+                            }
+
+                            deserializeString = deserializeString.Trim();
+                        }
+                        else
+                        {
+                            deserializeString = matches[currentIndex];
+                        }
+                        
+                        deserializeString = deserializeString
                             .Replace(
                                 (packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind
                                     ? ind.ListSeparator

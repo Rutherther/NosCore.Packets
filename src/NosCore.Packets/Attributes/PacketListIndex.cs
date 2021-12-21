@@ -16,6 +16,5 @@ namespace NosCore.Packets.Attributes
         }
 
         public string? ListSeparator { get; set; }
-        public sbyte Length { get; set; }
     }
 }

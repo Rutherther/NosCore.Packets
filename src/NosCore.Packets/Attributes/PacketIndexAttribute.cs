@@ -31,5 +31,7 @@ namespace NosCore.Packets.Attributes
         public bool RemoveHeader { get; set; }
 
         public bool RemoveHash { get; set; }
+        
+        public int Length { get; set; }
     }
 }
