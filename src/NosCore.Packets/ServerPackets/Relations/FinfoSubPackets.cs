@@ -19,7 +19,7 @@ namespace NosCore.Packets.ServerPackets.Relations
         [PacketIndex(1)]
         public bool IsConnected { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(2, IsOptional = true)]
         public string? CharacterName { get; set; }
     }
 }
