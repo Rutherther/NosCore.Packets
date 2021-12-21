@@ -24,6 +24,7 @@ using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ClientPackets.Bazaar;
 using NosCore.Packets.ClientPackets.Commands;
 using NosCore.Packets.ClientPackets.Warehouse;
+using NosCore.Packets.ServerPackets.Act4;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Login;
 using NosCore.Packets.ServerPackets.Miniland;
@@ -63,6 +64,8 @@ namespace NosCore.Packets.Tests
                 typeof(ClientVersionSubPacket),
                 typeof(CScalcPacket),
                 typeof(CreateFamilyPacket),
+                typeof(FcPacket),
+                typeof(FcSubPacket),
             });
 
         [TestMethod]
@@ -86,6 +89,22 @@ namespace NosCore.Packets.Tests
             var packet = (NsTestPacket)Deserializer.Deserialize("NsTeST 4 gorlik 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 3 2 2 7 1 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 31135 79.110.84.132:4016:1:1.7.Feniks 79.110.84.132:4014:1:1.5.Feniks 79.110.84.132:4015:0:1.6.Feniks 79.110.84.132:4011:7:1.2.Feniks 79.110.84.132:4012:1:1.3.Feniks 79.110.84.132:4013:1:1.4.Feniks 79.110.84.132:4010:1:1.1.Feniks -1:-1:-1:10000.10000.1");
             Assert.AreEqual("gorlik", packet.AccountName);
             Assert.AreEqual(8, packet.SubPacket!.Count);
+        }
+        
+        [TestMethod]
+        public void PacketFcTestSubpackets()
+        {
+            var packet = (FcPacket)Deserializer.Deserialize("fc 1 15122 76 0 0 0 0 0 0 0 0 100 3 10 1000 1 0 0 0 0");
+            Assert.AreEqual(FactionType.Angel, packet.Faction);
+            Assert.AreEqual(15122, packet.MinutesUntilReset);
+            Assert.IsNotNull(packet.AngelState);
+            Assert.IsNotNull(packet.DemonState);
+            Assert.AreEqual(76, packet.AngelState.Percentage);
+            Assert.AreEqual(100, packet.DemonState.Percentage);
+            Assert.AreEqual(Act4Mode.Raid, packet.DemonState.Mode);
+            Assert.AreEqual(10, packet.DemonState.CurrentTime);
+            Assert.AreEqual(1000, packet.DemonState.TotalTime);
+            Assert.AreEqual(true, packet.DemonState.IsMorcos);
         }
 
         [TestMethod]

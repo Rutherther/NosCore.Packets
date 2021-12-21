@@ -25,6 +25,7 @@ using NosCore.Packets.ServerPackets.Shop;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NosCore.Packets.ServerPackets.Act4;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Quest;
 using NosCore.Shared.Enumerations;
@@ -60,7 +61,8 @@ namespace NosCore.Packets.Tests
                 typeof(SuccessPacket),
                 typeof(TargetOffPacket),
                 typeof(GuriPacket),
-                typeof(BiPacket)
+                typeof(BiPacket),
+                typeof(FcPacket),
             });
 
         [TestMethod]
