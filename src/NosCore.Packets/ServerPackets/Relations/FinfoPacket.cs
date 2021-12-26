@@ -14,7 +14,7 @@ namespace NosCore.Packets.ServerPackets.Relations
     [PacketHeader("finfo", Scope.InGame)]
     public class FinfoPacket : PacketBase
     {
-        [PacketListIndex(0)]
+        [PacketListIndex(0, SpecialSeparator = ".")]
         public List<FinfoSubPackets?>? FriendList { get; set; }
     }
 }
