@@ -216,6 +216,17 @@ namespace NosCore.Packets
             }
         }
 
+        /// <summary>
+        /// Deserializes packet without a header from the given type.
+        /// </summary>
+        /// <param name="type">The type of the packet.</param>
+        /// <param name="packetContent">The content of the packet.</param>
+        /// <returns>The deserialized packet.</returns>
+        public IPacket? DeserializeHeaderlessIPacket(Type type, string packetContent)
+        {
+            return DeserializeIPacket(_packetDeserializerDictionary[type.Name], packetContent, false, false);
+        }
+
         private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
             var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
