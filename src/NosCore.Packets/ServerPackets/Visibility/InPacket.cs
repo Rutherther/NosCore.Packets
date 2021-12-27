@@ -21,7 +21,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public string? Name { get; set; }
 
         [PacketIndex(2)]
-        public string? VNum { get; set; }
+        public long? VNum { get; set; }
 
         [PacketIndex(3)]
         public long VisualId { get; set; }

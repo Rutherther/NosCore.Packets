@@ -33,7 +33,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         [PacketIndex(5, SpecialSeparator = ".")]
         public InEquipmentSubPacket? Equipment { get; set; }
 
-        [PacketIndex(6, SpecialSeparator = " ")]
+        [PacketIndex(6, SpecialSeparator = " ", Length = 2)]
         public InAliveSubPacket? InAliveSubPacket { get; set; }
 
         [PacketIndex(7)]
@@ -43,7 +43,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public long? GroupId { get; set; }
 
         [PacketIndex(9)]
-        public byte Fairy { get; set; }
+        public short Fairy { get; set; }
 
         [PacketIndex(10)]
         public byte FairyElement { get; set; }
@@ -74,7 +74,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public string? FamilyName { get; set; }
 
         [PacketIndex(19)]
-        public short ReputIco { get; set; }
+        public string? ReputIco { get; set; }
 
         [PacketIndex(20)]
         public bool Invisible { get; set; }
