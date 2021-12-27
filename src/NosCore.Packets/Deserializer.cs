@@ -318,6 +318,7 @@ namespace NosCore.Packets
                                 deserializeString += $" {matches[currentIndex++]}";
                             }
 
+                            currentIndex--;
                             deserializeString = deserializeString.Trim();
                         }
                         else
@@ -345,7 +346,7 @@ namespace NosCore.Packets
             var newIndex = currentIndex;
             var length = packetIndexAttribute is PacketListIndexAttribute listIndex ? listIndex.Length : 0;
             string[]? splited = null;
-
+            
             if (length < 0)
             {
                 length = sbyte.Parse(matches[currentIndex + length]);
